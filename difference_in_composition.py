@@ -42,3 +42,9 @@ def composition(fastaList):
 
 
 print(composition(fastaList))
+
+def test_input(seqs):
+    if seqs not in 'ACGT':
+        raise Exception('There are non-bases characters in the fasta')
+    else:
+        continue
