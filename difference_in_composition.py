@@ -20,6 +20,8 @@ def readFastq(fasta):
                 seqs.append('')
             else:
                 seqs[-1] += line.upper()
+
+            test_input(seqs)
     return ids, seqs
 
 def composition(fastaList):
@@ -40,7 +42,6 @@ def composition(fastaList):
         compList[id] = compVector
     return compList
 
-
 print(composition(fastaList))
 
 def test_input(seqs):
@@ -48,3 +49,7 @@ def test_input(seqs):
         raise Exception('There are non-bases characters in the fasta')
     else:
         continue
+
+if __name__ == "__main__":
+    # execute only if run as a script
+    main()
