@@ -20,12 +20,7 @@ def readFastq(fasta):
                 seqs.append('')
             else:
                 seqs[-1] += line.upper()
-<<<<<<< HEAD
                 test_input(seqs)
-=======
-
-            test_input(seqs)
->>>>>>> 339e7057907495bb52f780ed92dfd07bea9cf69f
     return ids, seqs
 
 def composition(fastaList):
