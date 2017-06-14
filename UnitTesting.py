@@ -1,4 +1,5 @@
 import unittest
+import argparse
 import difference_in_composition as dic
 
 #Input list of fasta files
@@ -9,5 +10,8 @@ dic.composition()
 dic.readFastq()
 
 
-
 #Assertion testing outside of functions
+
+#read in test fasta(s)
+
+fastaList = 
