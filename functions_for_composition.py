@@ -5,6 +5,11 @@
 #args = parser.parse_args()
 #fastaList is a list of all fasta files
 #fastaList = args.inFasta
+import numpy as np
+import itertools
+import math
+import pandas as pd
+
 
 def test_seq(seqs):
     if len(seqs)==0:
@@ -62,7 +67,33 @@ def composition(fastaList):
         compList[id] = compVector
     return compList
 
-#print(composition(fastaList))
+def phylip_matix(compList):
+    num=len(compList)
+    phylip=np.zeros((num,num),int)
+    print(phylip)
+    keyList=list()
+    i=0
+    for key, value in compList.items():
+        keyList.append(key)
+    #names = [_ for _ in keyList]
+    #phylip = pd.DataFrame(phylip, index=names, columns=names)
+    #print(phylip)
+    print(keyList)
+    posVec = [(0,0),(0,1),(1,0),(1,1)]
+    for keya,keyb in itertools.combinations(keyList,2):
+        a=compList.get(keya)
+        b=compList.get(keyb)
+        comp_d=math.sqrt(a[0]*(a[0]-b[0])**2 + a[1]*(a[1]-b[1])**2 + a[2]*(a[2]-b[2])**2 + a[3]*(a[3]-b[3])**2)*100
+
+        #print(comp_d)
+        #phylip[a,b]=comp_d
+        #phylip[b,a]=comp_d
+        phylip[1][1]=comp_d
+
+        i+=1
+        print(i)
+        print(phylip)
+
 
 
 

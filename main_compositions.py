@@ -1,6 +1,20 @@
 import unittest
 import argparse
-import difference_in_composition as dic
+import functions_for_composition as dic
+import numpy as np
+import itertools
+import math
+import pandas as pd
+
+parser = argparse.ArgumentParser()
+parser.add_argument("inFasta", nargs="+") #multiple input files will be stored in a list
+args = parser.parse_args()
+#fastaList is a list of all fasta files
+fastaList = args.inFasta
+
+compList = dic.composition(fastaList)
+phylip_matix=dic.phylip_matix(compList)
+
 
 #Input list of fasta files
 #Output dictionary with {id ; composition}
@@ -13,8 +27,5 @@ import difference_in_composition as dic
 
 #read in test fasta(s)
 
-badList ={"testCorrupt.fa","testCorrupt2.fa", "testCorrupt3,fa"}
 
-for entry in badList:
-    dic.readFastq(entry)
-
+#print(composition(fastaList))
