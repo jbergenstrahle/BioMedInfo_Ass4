@@ -20,6 +20,7 @@ def readFastq(fasta):
                 seqs.append('')
             else:
                 seqs[-1] += line.upper()
+                test_input(seqs)
     return ids, seqs
 
 def composition(fastaList):
@@ -29,7 +30,9 @@ def composition(fastaList):
     compVector = []
     for fasta in fastaList:
         id, seq = readFastq(fasta)
+        test_input(seq)
         id = id[0]
+        test_id(id)
         seq = seq[0]
         nrA = seq.count("A")
         nrC = seq.count("C")
@@ -46,5 +49,13 @@ print(composition(fastaList))
 def test_input(seqs):
     if seqs not in 'ACGT':
         raise Exception('There are non-bases characters in the fasta')
+    elif len(seqs)=0:
+        raise Exception('Fasta file is empty')
+    else:
+        continue
+
+def test_id(id):
+    if len(id)=0:
+        raise Exception('Fasta file is empty')
     else:
         continue
